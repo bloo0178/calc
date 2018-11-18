@@ -1,32 +1,87 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'Digital-7'; 
+  font-style: italic;
+  font-weight: 400; 
+  src: url('./digital-7-italic.ttf');
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+/*body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}*/
+
+.Display {  /*prevent display from spilling over - check content? */
+  font-family: 'Digital-7';
+  font-size: 30px;
   color: white;
+  background-color: #292c34;
+  display: grid;
+  grid-template-columns: 200px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  /*grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 1;*/
+  /*gridRowEnd: '2';*/
+  text-align: right;
+  vertical-align: middle;
+  border-style: solid;
+  border-color: #292c34;
+  border-width: 3px;
+  border-radius: 5px 5px 0px 0px; 
+  line-height: 50px; /*centers display text - come back and change this*/
 }
 
-.App-link {
-  color: #61dafb;
+
+.Calcgrid { 
+  background-color: darkgrey;
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px; /* possibly change to 1fr or repeat(4, 1fr) */
+  grid-auto-rows: 50px;
+  border-style: solid;
+  border-color: darkgrey;
+  border-width: 3px;
+  border-radius: 0px 0px 5px 5px; 
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  border-radius: 5px; 
+  background-color: white;
+  outline: none;
+}
+
+.FunctionBtn { /*change to target ID's and delete classes*/
+  background-color: lightgrey; 
+  /*color: #61dafb; */
+  color: black;
+}
+
+#clear {
+  background-color: orange;
+  color: white;
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+
+#seven {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+button:hover {
+  color: white; 
+  background-color: dimgray;
+  transition: color .5s ease-in-out;
 }
