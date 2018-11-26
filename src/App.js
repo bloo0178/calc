@@ -158,8 +158,6 @@ class App extends React.Component {
             <button id="decimal" value="." onClick={this.handleClickValues}>.</button>
             <button id="equals" className="FunctionBtn" onClick={this.handleClickEquals}>=</button>
             <button id="add" className="FunctionBtn" onClick={this.handleClickOperators}>+</button>
-
-
           </div>
         </div>
       </body>
