@@ -1,0 +1,19 @@
+@import "../../common/variables";
+
+.display {  /*prevent display from spilling over - check content? */
+    font-family: 'Digital-7';
+    font-size: $display-font-size;
+    color: $display-text-color;
+    background-color: $display-background-color;
+    display: grid;
+    grid-template-columns: 200px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: right;
+    vertical-align: middle;
+    border-style: solid;
+    border-color: $display-background-color;
+    border-width: 3px;
+    border-radius: 5px 5px 0px 0px; 
+    line-height: 50px;
+  }

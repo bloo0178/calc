@@ -1,0 +1,20 @@
+@import "../../common/variables";
+
+/*.container {
+  display: flex;
+}*/
+
+.number {
+  display: flex;
+  button {
+    border-radius: 5px;
+    background-color: $button-background-color;
+    outline: none;
+    width: 100%;
+  }
+  button:hover {
+    color: $button-hover-color;
+    background-color: $button-hover-background-color;
+    transition: $button-hover-transition;
+  }
+}

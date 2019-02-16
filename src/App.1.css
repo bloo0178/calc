@@ -21,6 +21,28 @@
   height: 100vh;
 }*/
 
+.Display {  /*prevent display from spilling over - check content? */
+  font-family: 'Digital-7';
+  font-size: 30px;
+  color: white;
+  background-color: #292c34;
+  display: grid;
+  grid-template-columns: 200px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  /*grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 1;*/
+  /*gridRowEnd: '2';*/
+  text-align: right;
+  vertical-align: middle;
+  border-style: solid;
+  border-color: #292c34;
+  border-width: 3px;
+  border-radius: 5px 5px 0px 0px; 
+  line-height: 50px; /*centers display text - come back and change this*/
+}
+
 
 .Calcgrid { 
   background-color: darkgrey;

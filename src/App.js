@@ -1,5 +1,6 @@
-//import React, { Component } from 'react';
-import React from 'react';
+import React from "react";
+import Display from "./components/Display/Display";
+import Button from "./components/Button/Button";
 //import './App.css';
 
 //React Components
@@ -41,7 +42,6 @@ class App extends React.Component {
       tempVal = stateClone.tempVal + event.target.value;
     }
 
-    console.clear();
     this.setState({
       tempVal: tempVal,
       displayVal: tempVal
@@ -50,27 +50,26 @@ class App extends React.Component {
 
   handleClickOperators(event) {
     console.clear();
-    var stateClone = { ...this.state };
-    var storedVal = stateClone.storedVal;
-    // eslint-disable-next-line
-    var tempVal = stateClone.tempVal;
+    let { storedVal, tempVal, displayVal } = this.state;
 
-    if (stateClone.storedVal === 0) {
-      storedVal = stateClone.tempVal;
+    if (storedVal === 0) {
+      storedVal = tempVal;
       tempVal = 0;
       this.setState({
         operator: event.target.id,
         storedVal: storedVal,
         tempVal: 0
       });
-      console.log("test");
-    } else if (stateClone.tempVal === 0 && stateClone.display !== 0) {
-      /* Tests to see if tempVal equals zero while display doesn't, implying that 0 wasn't intentionally entered - therefore, the user switched operators before applying new values. If so, updates state to the latest operator.*/
+    } else if (tempVal === 0 && displayVal !== 0) {
+      /* Tests to see if tempVal equals zero while display doesn't, implying 
+      that 0 wasn't intentionally entered - therefore, the user switched 
+      operators before applying new values. If so, updates state to the latest operator.*/
       this.setState({
         operator: event.target.id
       });
     } else {
-      /*Updates state to have the latest operator clicked and triggers equals if there is a value in both storedVal and tempVal*/
+      /*Updates state to have the latest operator clicked and triggers equals if
+       there is a value in both storedVal and tempVal*/
       this.setState({
         operator: event.target.id
       });
@@ -79,46 +78,19 @@ class App extends React.Component {
   }
 
   handleClickEquals(event) {
-    console.clear();
-    var stateClone = { ...this.state };
+    const { storedVal, tempVal, operator, displayVal } = this.state;
     var result;
 
-    function add(value1, value2) {
-      var sum = value1 + value2;
-      return sum;
-    }
-
-    function subtract(value1, value2) {
-      var difference = value1 - value2;
-      return difference;
-    }
-
-    function multiply(value1, value2) {
-      var product = value1 * value2;
-      return product;
-    }
-
-    function divide(value1, value2) {
-      var quotient = value1 / value2;
-      return quotient;
-    }
-
-    if (stateClone.operator === "add") {
-      result = add(Number(stateClone.storedVal), Number(stateClone.tempVal));
-    } else if (stateClone.operator === "subtract") {
-      result = subtract(
-        Number(stateClone.storedVal),
-        Number(stateClone.tempVal)
-      );
-    } else if (stateClone.operator === "multiply") {
-      result = multiply(
-        Number(stateClone.storedVal),
-        Number(stateClone.tempVal)
-      );
-    } else if (stateClone.operator === "divide") {
-      result = divide(Number(stateClone.storedVal), Number(stateClone.tempVal));
+    if (operator === "add") {
+      result = Number(storedVal) + Number(tempVal);
+    } else if (operator === "subtract") {
+      result = Number(storedVal) - Number(tempVal);
+    } else if (operator === "multiply") {
+      result = Number(storedVal) * Number(tempVal);
+    } else if (operator === "divide") {
+      result = Number(storedVal) / Number(tempVal);
     } else {
-      result = stateClone.displayVal;
+      result = displayVal;
     }
 
     this.setState({
@@ -130,42 +102,69 @@ class App extends React.Component {
 
   render() {
     return (
-
       <body>
         <div className="Wrapper">
-
-          <div className="Display">
-            {this.state.displayVal}
-          </div>
+          <Display displayVal={this.state.displayVal} />
           <div className="Calcgrid">
-            <button id="clear" onClick={this.handleClickClear}>AC</button>
-            <button id="seven" value={7} onClick={this.handleClickValues}>7</button>
-            <button id="eight" value={8} onClick={this.handleClickValues}>8</button>
-            <button id="nine" value={9} onClick={this.handleClickValues}>9</button>
-            <button id="divide" className="FunctionBtn" onClick={this.handleClickOperators}>/</button>
+            <button id="clear" onClick={this.handleClickClear}>
+              AC
+            </button>
+            <Button type={"number"} buttonText={"7"} value={7} onClick={this.handleClickValues} />
+            <Button type={"number"} buttonText={"8"} value={8} onClick={this.handleClickValues} />
+            <Button type={"number"} buttonText={"9"} value={9} onClick={this.handleClickValues} />
+            <button
+              id="divide"
+              className="FunctionBtn"
+              onClick={this.handleClickOperators}
+            >
+              /
+            </button>
 
-            <button id="four" value={4} onClick={this.handleClickValues}>4</button>
-            <button id="five" value={5} onClick={this.handleClickValues}>5</button>
-            <button id="six" value={6} onClick={this.handleClickValues}>6</button>
-            <button id="multiply" className="FunctionBtn" onClick={this.handleClickOperators}>x</button>
+            <Button type={"number"} buttonText={"4"} value={4} onClick={this.handleClickValues} />
+            <Button type={"number"} buttonText={"5"} value={5} onClick={this.handleClickValues} />
+            <Button type={"number"} buttonText={"6"} value={6} onClick={this.handleClickValues} />
+            <button
+              id="multiply"
+              className="FunctionBtn"
+              onClick={this.handleClickOperators}
+            >
+              x
+            </button>
 
-            <button id="one" value={1} onClick={this.handleClickValues}>1</button>
-            <button id="two" value={2} onClick={this.handleClickValues}>2</button>
-            <button id="three" value={3} onClick={this.handleClickValues}>3</button>
-            <button id="subtract" className="FunctionBtn" onClick={this.handleClickOperators}>-</button>
+            <Button type={"number"} buttonText={"1"} value={1} onClick={this.handleClickValues} />
+            <Button type={"number"} buttonText={"2"} value={2} onClick={this.handleClickValues} />
+            <Button type={"number"} buttonText={"3"} value={3} onClick={this.handleClickValues} />
+            <button
+              id="subtract"
+              className="FunctionBtn"
+              onClick={this.handleClickOperators}
+            >
+              -
+            </button>
 
-            <button id="zero" value={0} onClick={this.handleClickValues}>0</button>
-            <button id="decimal" value="." onClick={this.handleClickValues}>.</button>
-            <button id="equals" className="FunctionBtn" onClick={this.handleClickEquals}>=</button>
-            <button id="add" className="FunctionBtn" onClick={this.handleClickOperators}>+</button>
+            <Button type={"number"} buttonText={"0"} value={0} onClick={this.handleClickValues} />
+            <button id="decimal" value="." onClick={this.handleClickValues}>
+              .
+            </button>
+            <button
+              id="equals"
+              className="FunctionBtn"
+              onClick={this.handleClickEquals}
+            >
+              =
+            </button>
+            <button
+              id="add"
+              className="FunctionBtn"
+              onClick={this.handleClickOperators}
+            >
+              +
+            </button>
           </div>
         </div>
       </body>
     );
   }
 }
-
-
-
 
 export default App;
