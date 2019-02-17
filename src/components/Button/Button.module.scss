@@ -1,0 +1,49 @@
+@import "../../common/variables";
+
+.val {
+  display: flex;
+  button {
+    border-radius: 5px;
+    background-color: $button-background-color;
+    outline: none;
+    width: 100%;
+  }
+  button:hover {
+    color: $button-hover-color;
+    background-color: $button-hover-background-color;
+    transition: $button-hover-transition;
+  }
+}
+
+.operator {
+  display: flex;
+  button {
+    border-radius: 5px;
+    background-color: $operator-button-background-color;
+    outline: none;
+    width: 100%;
+  }
+  button:hover {
+    color: $button-hover-color;
+    background-color: $button-hover-background-color;
+    transition: $button-hover-transition;
+  }
+}
+
+.clear {
+  display: flex;
+  grid-column-start: 4;
+  grid-column-end: 5;
+  button {
+    border-radius: 5px;
+    background-color: $clear-button-background-color;
+    color: $clear-button-color;
+    outline: none;
+    width: 100%;
+  }
+  button:hover {
+    color: $button-hover-color;
+    background-color: $button-hover-background-color;
+    transition: $button-hover-transition;
+  }
+}
