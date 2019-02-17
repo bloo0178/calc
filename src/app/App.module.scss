@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "Digital-7";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../common/digital-7-italic.ttf");
+}
+
+.appContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.calcGrid {
+  background-color: darkgrey;
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px; /* possibly change to 1fr or repeat(4, 1fr) */
+  grid-auto-rows: 50px;
+  border-style: solid;
+  border-color: darkgrey;
+  border-width: 3px;
+  border-radius: 0px 0px 5px 5px;
+}
